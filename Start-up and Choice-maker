@@ -1,0 +1,44 @@
+# Use of functions will allow the user to return to previous story points
+# Imports necessary modules
+import textwrap
+import time
+global globaldict
+# Dictionary to contain necessary variables
+globaldict = {"albertInfo": "0","virus":"0","sattempt":3,"ddos":"0","datab":"0","deleted":"0","spammed":"0","friendly":"0","food":"0","reported":"0","vpnGermany":"0","vpnLondon":"0","vpnAlbert":"0","question1":"0","question2":"0","question3":"0"}
+# Indicates the first function to be ran
+runSection="Start"
+
+# Prints the text to screen 
+def textPrint(toPrint):
+    # Controls when the text wraps to the next line as to prevent mid word text wrapping
+    print(textwrap.fill(toPrint, 80))
+    print("")
+
+# Function which requests user input with two empty lines around the input for better formatting
+def spacedInput(outputText):
+    print("")
+    nextPart = input("Selection - ")
+    print("")
+    return nextPart
+
+# Template choiceMaker(["1","Run away","runAway"])
+# Outputs "Run away - 1"
+# If the user inputs "1" then the function "runAway" is ran
+
+# Function used to provide the user with choices
+def choiceMaker(choicesList):
+    # Loops until the user enters a valid input
+    while True:
+        for i in choicesList:
+            if len(i)==1:
+                tempNum=i
+            elif (choicesList.index(i)+1)%3==0:
+                continue
+            else:
+                print(tempNum + " - " + i)
+        selection=spacedInput("Selection - ")
+        if selection in choicesList and len(selection)==1:
+          return choicesList[choicesList.index(selection)+2]
+        else:
+          print("Please enter a valid input")
+        
