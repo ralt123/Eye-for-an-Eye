@@ -48,7 +48,7 @@ def choiceMaker(choicesList):
 # In a larger project these story point functions may be stored in a seperate file as to reduce clutter in the main file
 def Start():
     textPrint("Earlier on today, I asked my best friend ‘Dani’ for his Netflix account details, since I've been having some financial problems. I was annoyed with his selfish response; he wanted me to “ask someone else as he and his family were using so he didn’t want me to watch my shows that could cause the Netflix algorithm to give him weird recommendations and his family would think it was him who watched it instead”. I replied:\n")
-    return choiceMaker(["1","Okay","okay","2","No, I thought we were friends","noWeAreFriends","3","for testing","choice1"])
+    return choiceMaker(["1","Okay","okay","2","No, I thought we were friends","noWeAreFriends"])
 
 def noWeAreFriends():
     textPrint("He replied, \"I don't care what you think but i am not giving it to you\".")
