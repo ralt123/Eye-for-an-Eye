@@ -25,7 +25,8 @@ def spacedInput(outputText):
 # Template choiceMaker(["1","Run away","runAway"])
 # Outputs "Run away - 1"
 # If the user inputs "1" then the function "runAway" is ran
-# Provides the user with choices
+
+# Fucntion used to provide the user with choices
 def choiceMaker(choicesList):
     while True:
         for i in choicesList:
