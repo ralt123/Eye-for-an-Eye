@@ -1,1 +1,1 @@
-Hello and welcome to our repository. Hope you find what you are looking for.
+The story of two friends who are well versed in cyber security.
