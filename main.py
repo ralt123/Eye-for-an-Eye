@@ -1,11 +1,11 @@
 # Notes
-# Could've seper
 
-# Functions would allow the user to return to previous story points
+# Functions will allow the user to return to previous story points
 
 import textwrap
 import time
 global globaldict
+# Dictionary to contain necessary variables - tesat
 globaldict = {"albertInfo": "0","virus":"0","sattempt":3,"ddos":"0","datab":"0","deleted":"0","spammed":"0","friendly":"0","food":"0","reported":"0","vpnGermany":"0","vpnLondon":"0","vpnAlbert":"0","question1":"0","question2":"0","question3":"0"}
 runSection="Start"
 
