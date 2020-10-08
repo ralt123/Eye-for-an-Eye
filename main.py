@@ -15,7 +15,7 @@ def textPrint(toPrint):
     print(textwrap.fill(toPrint, 80))
     print("")
 
-# Two empty lines around the input for better formatting
+# Function which requests user input with two empty lines around the input for better formatting
 def spacedInput(outputText):
     print("")
     nextPart = input("Selection - ")
@@ -26,8 +26,9 @@ def spacedInput(outputText):
 # Outputs "Run away - 1"
 # If the user inputs "1" then the function "runAway" is ran
 
-# Fucntion used to provide the user with choices
+# Function used to provide the user with choices
 def choiceMaker(choicesList):
+    # Loops until the user enters a valid input
     while True:
         for i in choicesList:
             if len(i)==1:
