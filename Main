@@ -1,11 +1,3 @@
-# Notes
-
-
-
-# Could've seper
-
-# Functions would allow the user to return to previous story points
-
 import textwrap
 import time
 global globaldict
