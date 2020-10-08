@@ -1,13 +1,13 @@
-# Notes
+# Use of functions will allow the user to return to previous story points
 
-# Functions will allow the user to return to previous story points
-# Another test
 
+# Imports necessary modules
 import textwrap
 import time
 global globaldict
-# Dictionary to contain necessary variables - test
+# Dictionary to contain necessary variables
 globaldict = {"albertInfo": "0","virus":"0","sattempt":3,"ddos":"0","datab":"0","deleted":"0","spammed":"0","friendly":"0","food":"0","reported":"0","vpnGermany":"0","vpnLondon":"0","vpnAlbert":"0","question1":"0","question2":"0","question3":"0"}
+# Indicates the first function to be ran
 runSection="Start"
 
 # Prints the text to screen 
@@ -16,7 +16,7 @@ def textPrint(toPrint):
     print(textwrap.fill(toPrint, 80))
     print("")
 
-# Two empty lines around the input for better formatting
+# Function which requests user input with two empty lines around the input for better formatting
 def spacedInput(outputText):
     print("")
     nextPart = input("Selection - ")
@@ -26,8 +26,10 @@ def spacedInput(outputText):
 # Template choiceMaker(["1","Run away","runAway"])
 # Outputs "Run away - 1"
 # If the user inputs "1" then the function "runAway" is ran
-# Provides the user with choices
+
+# Function used to provide the user with choices
 def choiceMaker(choicesList):
+    # Loops until the user enters a valid input
     while True:
         for i in choicesList:
             if len(i)==1:
@@ -42,7 +44,8 @@ def choiceMaker(choicesList):
         else:
           print("Please enter a valid input")
         
-# Story points
+# Functions for each story point
+# In a larger project these story point functions may be stored in a seperate file as to reduce clutter in the main file
 def Start():
     textPrint("Earlier on today, I asked my best friend ‘Dani’ for his Netflix account details, since I've been having some financial problems. I was annoyed with his selfish response; he wanted me to “ask someone else as he and his family were using so he didn’t want me to watch my shows that could cause the Netflix algorithm to give him weird recommendations and his family would think it was him who watched it instead”. I replied:\n")
     return choiceMaker(["1","Okay","okay","2","No, I thought we were friends","noWeAreFriends","3","for testing","choice1"])
@@ -103,7 +106,6 @@ def continue1():
 def notsightright():
   textPrint("That message further solidified the fact that he knows what he is doing to me, it is only a Netflix account and i've known him for years. He is selfish, needs to be taught a lesson and I need my justice. I tried to change but it's time to return to my")
   return choiceMaker(["1","Revenge plan","Revengeplan"])
-
   
 def phising2():
   textPrint("I had to take two main steps to ensure he didn’t recognise it as a fraudulent email.")
@@ -402,7 +404,6 @@ def codeBugsSyntax():
   textPrint("Syntax errors will cause frustration as he is constantly bombarded with error messages.")
   return choiceMaker(["1","Return to website homepage","codeSite1"])
 
-
 def vpnAlbert():
   textPrint("What? A VPN can't just steal someones IP...")
   globaldict["vpnAlbert"]="1"
@@ -421,7 +422,6 @@ def Warnhim():
   textPrint("I messaged him and showed him all the breached data relevant to him. Albert was surprised was the gesture, he didn't even question how I found the data. I told him of services such as \"https://haveibeenpwned.com/\" as to ensure he could protect himself in the future. Albert claimed that some of the data was still relevant and could've had disastrous results, he was surprisingly greatful. He apologized for his actions and as a result you became better friends.")
   globaldict["friendly"]="1"
   return choiceMaker(["1","Is that it?","ending"])
-
 
 def ending():
   if globaldict["datab"]=="1":
@@ -454,7 +454,7 @@ def ending():
   time.sleep(1000**10)
   
 
-# Used to run each function when 
+# Used to run each function
 while True:
   exec("runSection=%s()" % (runSection))
     
