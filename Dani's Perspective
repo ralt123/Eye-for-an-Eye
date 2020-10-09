@@ -288,37 +288,3 @@ def Warnhim():
   return choiceMaker(["1","Is that it?","ending"])
 
 
-def ending():
-  if globaldict["datab"]=="1":
-    if globaldict["deleted"]=="1":
-      textPrint("I took this too far, deleting his programs was unncessary...")
-    else:
-      textPrint("I messed with his programs and I'm certain he'll take notice; I could've done a lot worse.")
-  
-  if globaldict["reported"]=="1":
-    textPrint("Reporting Albert's social media posts was meaningless, but at least it felt good.")
-
-  if globaldict["spammed"]=="1":
-    textPrint("I spammed all of Albert's emails by using a variety of websites, he'll either have to make a new email account or delete the spam himself")
-
-  if globaldict["ddos"]=="1":
-    textPrint("Maybe in another world I would've been able to DDOS Albert.")
-
-  if globaldict["virus"]=="1":
-    textPrint("I'5l s#an 3y PC fo/ virus3s t&mo$row.")
-
-  if globaldict["datab"]=="0" and globaldict["reported"]=="0" and globaldict["spammed"]=="0" and globaldict["friendly"] =="1":
-    textPrint("I'm glad I was able to remain friends with Albert. Petty revenge isn't worth it.")
-  elif globaldict["friendly"] =="1":
-    textPrint("Whilst me and Albert are friends again, I hope he isn't too vengeful when he discovers my revenge.")
-
-  if globaldict["datab"]=="0" and globaldict["reported"]=="0" and globaldict["spammed"]=="0" and globaldict["friendly"] =="0":
-    textPrint("I didn't get my revenge")
-  time.sleep(1000)
-  textPrint("The game has ended")
-  time.sleep(1000**10)
-  
-
-# Used to run each function when 
-while True:
-  exec("runSection=%s()" % (runSection))
