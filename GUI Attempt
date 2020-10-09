@@ -12,7 +12,7 @@ class GUI_Story:
         master.configure(bg='light grey')
 
         self.messageFormat("123456789012345678901234567890123456789012345678901234567890123456789H")
-        self.messageFormat("Earlier on today, I asked my best friend ‘Dani’ for his Netflix account details, since I've been having some financial problems. I was annoyed with his selfish response; he wanted me to “ask someone else as he and his family were using so he didn’t want me to watch my shows that could cause the Netflix algorithm to give him weird recommendations and his family would think it was him who watched it instead”. I replied:\n")
+        self.messageFormat("Earlier on today, I asked my best friend ‘Dani’ for his Netflix account details, since I've been having some financial problems. I was annoyed with his selfish response; he wanted me to “ask someone else as he and his family were using so he didn’t want me to watch my shows that could cause the Netflix algorithm to give him weird recommendations and his family would think it was him who watched it instead. I replied:NN")
         self.choices = (["1","Okay","okay","2","No, I thought we were friends","noWeAreFriends"])
         self.choiceMaker(self.choices)
         
@@ -48,18 +48,30 @@ class GUI_Story:
 
     # Update so wraps before wrap word instead of after
     def messageFormat(self,displayMessage):
+        print(displayMessage)
         counter=0
+        holder=""
         messageOutput="\n"
         spacingCheck=0
         revokeSpace=0
         for i in displayMessage:
             counter+=1
             if spacingCheck==1:
-                if i.lower()=="n":
+                if i=="N":
                     spacingCheck=0
-                    i=0
-            elif i == "\"":
+                    messageOutput+="\n"
+                    print("niceee")
+                    counter=0
+                    continue
+                else:
+                    messageOutput+=holder
+                    messageOutput+=i
+                    spacingCheck=0
+                    continue
+            elif i == "N":
                 spacingCheck=1
+                holder=i
+                continue
             if counter>68:
                 if i == " ":
                     messageOutput=messageOutput+"\n"
@@ -106,7 +118,7 @@ class GUI_Story:
 
     # Story points
     #def Start(self): 
-        #self.messageFormat("Earlier on today, I asked my best friend ‘Dani’ for his Netflix account details, since I've been having some financial problems. I was annoyed with his selfish response; he wanted me to “ask someone else as he and his family were using so he didn’t want me to watch my shows that could cause the Netflix algorithm to give him weird recommendations and his family would think it was him who watched it instead”. I replied:\n")
+        #self.messageFormat("Earlier on today, I asked my best friend ‘Dani’ for his Netflix account details, since I've been having some financial problems. I was annoyed with his selfish response; he wanted me to “ask someone else as he and his family were using so he didn’t want me to watch my shows that could cause the Netflix algorithm to give him weird recommendations and his family would think it was him who watched it instead”. I replied:NN")
         #self.choiceMaker(["1","Okay","okay","2","No, I thought we were friends","noWeAreFriends"])
 
     def okay(self):
@@ -114,7 +126,7 @@ class GUI_Story:
         self.choiceMaker(["1","Continue","next"])
 
     def noWeAreFriends(self):
-        self.messageFormat("He replied, \'\'I don\'t care what you think but I am not giving it to you\'\'.  \nI thought, \'\'How could you do this to me?\'\'\n")
+        self.messageFormat("He replied, \'\'I don\'t care what you think but I am not giving it to you\'\'.  NNI thought, \'\'How could you do this to me?\'\'NN")
         self.choiceMaker(["1","Continue","okay"])
 
     def next(self):
@@ -158,7 +170,7 @@ class GUI_Story:
         self.choiceMaker(["1","Revenge plan","Revengeplan"])
 
     def continue1(self):
-        self.messageFormat("I opened the messages that Dani had sent me, i never bothered to read them, he saw that I was ignoring him and in one message he wrote \"You realise that you're being petty, it is your fault that you lost your job, and my choice to share my account. Just grow up and realise not everything will go your way.\"\n")
+        self.messageFormat("I opened the messages that Dani had sent me, i never bothered to read them, he saw that I was ignoring him and in one message he wrote \"You realise that you're being petty, it is your fault that you lost your job, and my choice to share my account. Just grow up and realise not everything will go your way.\"NN")
         self.choiceMaker(["1","That did not sit right with me","notsightright"])
 
     def notsightright(self):
@@ -191,15 +203,15 @@ class GUI_Story:
 
     def step2(self):
         # COULD BE A PROBLEM AWEJAIWJE IOAWJE IOAWJEIO AWJEIWAJEOI AWJIEOJ AWOIEJ A
-        self.messageFormat("Subject: NETFLIX: Security verification required.\n\nNETFLIX \n\nHi dear, \n\nWe have detected suspicious activity within your account. \n\nThere have been many log-in attempts linked to this Netflix emails. So, for extra security, we are requiring all users with these problems to verify their account information. \n\nPlease follow the instructions in the link below. All the \n\nsteps provided are to ensure the security of your account \n\n-Your friends at Netflix \n\nUPDATE YOUR DETAILS\n\nxxx\n\nQuestions? Call 1-234-567-890\n\nG32 Armstrong Siddeley Building, Gosford Street, CV1 5PY, U.K. \n\nUnsubscribe | Terms of Use | Privacy | Help Centre\n\nThis message was mailed to Dani4006@gmail.com by Netflix because you are a former Netflix member. \n\nSRC: 00876 en GB\n")
+        self.messageFormat("Subject: NETFLIX: Security verification required.NNNETFLIX NNHi dear, NNWe have detected suspicious activity within your account. NNThere have been many log-in attempts linked to this Netflix emails. So, for extra security, we are requiring all users with these problems to verify they\'re account information. NNPlease follow the instructions in the link belowe. All the NNsteps provided are to ensure the security of you\'re account NN-Your friends at Netflix NNUPDATE YOUR DETAILSNNxxxNNQuestions? Call 1-234-567-890NNG32 Armstrong Siddeley Building, Gosford Street, CV1 5PY, U.K. NNUnsubscribe | Terms of Use | Privacy | Help CentreNNThis message was mailed to Dani4006@gmail.com by Netflix because you are a former Netflix member. NNSRC: 00876 en GB")
         self.choiceMaker(["1","Dani's Perspective","daniPOV"])
 
     def daniPOV(self):
-        self.messageFormat("I received an email from ‘Netflix’ today, asking me to update my account details for extra security. Because there has supposedly been a suspicious number of log-in attempts made. Which I thought was odd; I don’t share my account details with anyone.\n\nThe only way this could be possible is if someone in my family was sharing our account with their friends")
+        self.messageFormat("I received an email from ‘Netflix’ today, asking me to update my account details for extra security. Because there has supposedly been a suspicious number of log-in attempts made. Which I thought was odd; I don’t share my account details with anyone.NNNNThe only way this could be possible is if someone in my family was sharing our account with their friends")
         self.choiceMaker(["1","Continue","sisterStory"])
 
     def sisterStory(self):
-        self.messageFormat("My little sister Maria has asked me in the past if she could share the account with her friend, I specifically told her no, and not to do it. I even monitored my emails for unknown logins from another location but it never happened. So this doesn't make sense.\nBefore considering that option I decided to look closer a the email instead")
+        self.messageFormat("My little sister Maria has asked me in the past if she could share the account with her friend, I specifically told her no, and not to do it. I even monitored my emails for unknown logins from another location but it never happened. So this doesn't make sense.NNBefore considering that option I decided to look closer a the email instead")
         self.choiceMaker(["1","Inspect email","emailInspection"])
 
     def emailInspection(self):
@@ -207,7 +219,7 @@ class GUI_Story:
         self.choiceMaker(["1","Continue","emailInspection2"])
 
     def emailInspection2(self):
-        self.messageFormat("I checked if the email was sent from a public email domain. I compared this email address to past email I received from Netflix, in which the domain name was @Netflix.com.\n\nThis immediately indicated that the email I received today was indeed a phishing email, because it did not have a public domain, instead it had a private domain. No legitimate company in the world would use this, especially a big corporation like Netflix. Therefore, this RedFlag 100% guaranteed that this was not a genuine email from Netflix.")
+        self.messageFormat("I checked if the email was sent from a public email domain. I compared this email address to past email I received from Netflix, in which the domain name was @Netflix.com.NNNNThis immediately indicated that the email I received today was indeed a phishing email, because it did not have a public domain, instead it had a private domain. No legitimate company in the world would use this, especially a big corporation like Netflix. Therefore, this RedFlag 100% guaranteed that this was not a genuine email from Netflix.")
         self.choiceMaker(["1","Play the ‘game’ and respond with a taste of his own medicine","ddos1","2","Don't take revenge","forgiveness"])
 
     def forgiveness(self):
@@ -215,7 +227,7 @@ class GUI_Story:
         self.choiceMaker(["1","Go back","emailInspection2"])
 
     def ddos1(self):
-        self.messageFormat("A DDoS attack typically involves infected nodes from different networks attacking the same victim simultaneously.\nDue to all the incoming flooding traffic originating from different networks, it’s impossible to stop the attack by simply using ingress filtering, the attack renders the target machine unable to access any desired server; all the necessary traffic to access the server are unable to processed by the client due to the large amount of useless incoming requests sent by the “zombies” taking a considerable amount of time to process.")
+        self.messageFormat("A DDoS attack typically involves infected nodes from different networks attacking the same victim simultaneously.NNDue to all the incoming flooding traffic originating from different networks, it’s impossible to stop the attack by simply using ingress filtering, the attack renders the target machine unable to access any desired server; all the necessary traffic to access the server are unable to processed by the client due to the large amount of useless incoming requests sent by the “zombies” taking a considerable amount of time to process.")
         self.choiceMaker(["1","How does it work?","ddos2","2","Don't care, skip","choice1"])
 
     def ddos2(self):
@@ -255,7 +267,7 @@ class GUI_Story:
         self.choiceMaker(["1","Create botnet","botnet","2","Go back","choice1"])
 
     def botnet(self):
-        self.messageFormat("This is way too difficult for me, not to mention extremely overkill.\nAlbert only sent me a malicious email, there's no need for me to call upon an army of zombies for revenge")
+        self.messageFormat("This is way too difficult for me, not to mention extremely overkill.NNAlbert only sent me a malicious email, there's no need for me to call upon an army of zombies for revenge")
         self.varDict["ddos"] = "1"
         self.choiceMaker(["1","Reconsider","choice1"])
 
@@ -274,22 +286,22 @@ class GUI_Story:
     #DEAL WITH LATER
     def socialFriends(self):
         if self.varDict["virus"]=="1":
-            print("Fr1en&s # \n-5ac3b Matth5ws\n-Iris S&er#ey \n-Zorana *egi$e \n-Si&fra*Fred\n#3 others *idden")
+            print("Fr1en&s # NN-5ac3b Matth5wsNN-Iris S&er#ey NN-Zorana *egi$e NN-Si&fra*FredNN#3 others *idden")
         else:
-            print("Friends - \nJacob Matthews\nIris Sherley \nZorana Regine \nSiofra Fred \n13 others hidden\n")
+            print("Friends - NNJacob MatthewsNNIris Sherley NNZorana Regine NNSiofra Fred NN13 others hiddenNN")
         self.messageFormat("I don't use social media so it's no surprise that I'm not listed")
         self.choiceMaker(["1","Go back","socialMedia1"])
 
     def socialInterests(self):
         socialMessage=""
         if self.varDict["virus"]=="1":
-            socialMessage+=("3avo*ite$Hobb#: Pro*ra1min5\n-Favo5rite fo$d:#Chicken\n-*avouri5e Mo1ie3 The *od5athe%\n-Favourite3Music Genre: Undecid&d\n-1avo#uit5 Drink: Pep%i")
+            socialMessage+=("3avo*ite$Hobb#: Pro*ra1min5NN-Favo5rite fo$d:#ChickenNN-*avouri5e Mo1ie3 The *od5athe%NN-Favourite3Music Genre: Undecid&dNN-1avo#uit5 Drink: Pep%i")
         else:
-            socialMessage+=("Favorite Hobby: Programming\nFavourite food: Chicken\nFavourite Movie: The Godfather\nFavourite Music Genre: Undecided\nFavoruite Drink: Pepsi\n")
+            socialMessage+=("Favorite Hobby: ProgrammingNNFavourite food: ChickenNNFavourite Movie: The GodfatherNNFavourite Music Genre: UndecidedNNFavoruite Drink: PepsiNN")
         if globaldict["food"]=="1":
-            socialMessage+=("\n\nAm I missing something?")
+            socialMessage+=("NNNNAm I missing something?")
         else:
-            socialMessage+=("\n\nNothing of interest...")
+            socialMessage+=("NNNNNothing of interest...")
         self.choiceMaker(["1","Go back","socialMedia1"])
         self.messageFormat(socialMessage)
 
@@ -331,7 +343,7 @@ class GUI_Story:
         self.choiceMaker(["1","What's going on?","virus5"])
 
     def virus5(self):
-        self.messageFormat("The virus appears to corrupt certain peices of text on my pc.\n&t le5st * can stil# use m* 3c for reve#ge")
+        self.messageFormat("The virus appears to corrupt certain peices of text on my pc.NN&t le5st * can stil# use m* 3c for reve#ge")
         self.choiceMaker(["1","Review choices","choice1"])
 
     def endingCheck(self):
@@ -343,7 +355,7 @@ class GUI_Story:
         self.choiceMaker(["1","Spend hours attempting to log into different services","service1","2","Flood his emails with spam","spamemail","3","Warn him about his data being leaked","dataleak","4","Review choices","choice1"])
 
     def service1(self):
-        self.messageFormat("After 30 minutes I've find a success combination for a service.\nIt's for a gaming website, but whenever I attempt to login, I get blocked due to my location not matching Albert's.")
+        self.messageFormat("After 30 minutes I've find a success combination for a service.NNIt's for a gaming website, but whenever I attempt to login, I get blocked due to my location not matching Albert's.")
         self.choiceMaker(["1","Pull out the VPN","vpn1","2","Try Albert's details on other services","service2"])
 
     def vpn1(self):
@@ -363,22 +375,22 @@ class GUI_Story:
         self.choiceMaker(["1","Go back","vpn1"]) 
 
     def service2(self):
-        self.messageFormat("I was mere minutes away from giving up and going to sleep, but then I found another service that I could sign into using Albert's details.\n\nI don't have the energy to search for more services, I'm hoping this will work...")
+        self.messageFormat("I was mere minutes away from giving up and going to sleep, but then I found another service that I could sign into using Albert's details.NNNNI don't have the energy to search for more services, I'm hoping this will work...")
         if self.varDict["datab"]=="0":
             self.choiceMaker(["1","Log in","serviceLogin"])
         else:
             self.choiceMaker(["1","Log in","codeSite1"])
 
     def serviceLogin(self):
-        self.messageFormat("Security question:\nAttempts remaining - " + str(globaldict["sattempt"]) + "/3\nRemaining Questions - 3/3\n\nSecurity questions, I'm assuming I have to answer them because my IP doesn't match Albert's")
+        self.messageFormat("Security question:NNAttempts remaining - " + str(globaldict["sattempt"]) + "/3NNRemaining Questions - 3/3NNNNSecurity questions, I'm assuming I have to answer them because my IP doesn't match Albert's")
         if self.varDict["sattempt"]==0:
-            self.messageFormat("Check email for account recovery.\nI'm locked out")
+            self.messageFormat("Check email for account recovery.NNI'm locked out")
             self.choiceMaker(["1","Use a VPN","vpnBlocked","2","Review choices","choice1"])
         else:
             self.choiceMaker(["1","Security question 1","question1","2","Use a VPN","vpnBlocked","3","Review choices","choice1"])
         
     def vpnBlocked(self):
-        self.messageFormat("I'm now no longer able to access the website, regardless of my location.\nThe service somehow knows i'm using a VPN...")
+        self.messageFormat("I'm now no longer able to access the website, regardless of my location.NNThe service somehow knows i'm using a VPN...")
         self.choiceMaker(["1","Disable VPN","serviceLogin"])
       
     def question1(self):
@@ -430,11 +442,11 @@ class GUI_Story:
             messageCodeSite1="It's all gone..."
             self.choiceMaker(["1","Review choices","choice1"])
         else:
-            messageCodeSite1+=("At last, something of value to Albert.\n\nThe site contains 3 programs Albert has been working on, I hope they're important to him.\n\nThere are 3 files\n")
+            messageCodeSite1+=("At last, something of value to Albert.NNNNThe site contains 3 programs Albert has been working on, I hope they're important to him.NNNNThere are 3 filesNN")
             if globaldict["virus"]=="1":
-                messageCodeSite1+=("1rojec# 1\n-passwor# m*na5er\n-%tawr63&\n")
+                messageCodeSite1+=("1rojec# 1NN-passwor# m*na5erNN-%tawr63&NN")
             else:
-                messageCodeSite1+=("project 1\npassword manager\nrtawr63w\n")
+                messageCodeSite1+=("project 1NNpassword managerNNrtawr63wNN")
             self.choiceMaker(["1","View the code","codeView","2","Add bugs to code","codeBugs","3","Remove comments from code","codeComments","4","Delete the code","codeDelete","5","Review choices","choice1"])
         self.messageFormat(messageCodeSite1)
     def codeView(self):
@@ -492,26 +504,26 @@ class GUI_Story:
         messageEnding=""
         if self.varDict["datab"]=="1":
             if self.varDict["deleted"]=="1":
-                messageEnding+=("I took this too far, deleting his programs was unncessary...\n")
+                messageEnding+=("I took this too far, deleting his programs was unncessary...NN")
             else:
                 messageEnding+=("I messed with his programs and I'm certain he'll take notice; I could've done a lot worse.\m")
       
         if self.varDict["reported"]=="1":
-            messageEnding+=("Reporting Albert's social media posts was meaningless, but at least it felt good.\n")
+            messageEnding+=("Reporting Albert's social media posts was meaningless, but at least it felt good.NN")
 
         if self.varDict["spammed"]=="1":
-            messageEnding+=("I spammed all of Albert's emails by using a variety of websites, he'll either have to make a new email account or delete the spam himself\n")
+            messageEnding+=("I spammed all of Albert's emails by using a variety of websites, he'll either have to make a new email account or delete the spam himselfNN")
 
         if self.varDict["ddos"]=="1":
-            messageEnding+=("Maybe in another world I would've been able to DDOS Albert.\n")
+            messageEnding+=("Maybe in another world I would've been able to DDOS Albert.NN")
 
         if self.varDict["virus"]=="1":
-            messageEnding+=("I'5l s#an 3y PC fo/ virus3s t&mo$row.\n")
+            messageEnding+=("I'5l s#an 3y PC fo/ virus3s t&mo$row.NN")
 
         if self.varDict["datab"]=="0" and self.varDict["reported"]=="0" and self.varDict["spammed"]=="0" and self.varDict["friendly"] =="1":
-            messageEnding+=("I'm glad I was able to remain friends with Albert. Petty revenge isn't worth it.\n")
+            messageEnding+=("I'm glad I was able to remain friends with Albert. Petty revenge isn't worth it.NN")
         elif globaldict["friendly"] =="1":
-            messageEnding+=("Whilst me and Albert are friends again, I hope he isn't too vengeful when he discovers my revenge.\n")
+            messageEnding+=("Whilst me and Albert are friends again, I hope he isn't too vengeful when he discovers my revenge.NN")
 
         if globaldict["datab"]=="0" and globaldict["reported"]=="0" and globaldict["spammed"]=="0" and globaldict["friendly"] =="0":
             messageEnding+=("I didn't get my revenge")
