@@ -1,3 +1,7 @@
+# Various possible improvements can be made
+# Focus on allowing input from GUI rather than IDLE
+
+
 import random
 from tkinter import Tk, Label, Button, Entry, StringVar, DISABLED, NORMAL, END, W, E
 #from Project_work import *
