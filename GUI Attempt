@@ -4,7 +4,7 @@ from tkinter import Tk, Label, Button, Entry, StringVar, DISABLED, NORMAL, END, 
 
 class GUI_Story:
     def __init__(self, master):
-        self.varDict=globaldict = {"albertInfo": "0","virus":"0","sattempt":3,"ddos":"0","datab":"0","deleted":"0","spammed":"0","friendly":"0","food":"0","reported":"0","vpnGermany":"0","vpnLondon":"0","vpnAlbert":"0","question1":"0","question2":"0","question3":"0"}
+        self.varDict={"albertInfo": "0","virus":"0","sattempt":3,"ddos":"0","datab":"0","deleted":"0","spammed":"0","friendly":"0","food":"0","reported":"0","vpnGermany":"0","vpnLondon":"0","vpnAlbert":"0","question1":"0","question2":"0","question3":"0"}
         self.master = master
         master.title("GUI attempt")
         master.geometry("985x600") #You want the size of the app to be 500x500
@@ -48,7 +48,6 @@ class GUI_Story:
 
     # Update so wraps before wrap word instead of after
     def messageFormat(self,displayMessage):
-        print(displayMessage)
         counter=0
         holder=""
         messageOutput="\n"
@@ -60,7 +59,6 @@ class GUI_Story:
                 if i=="N":
                     spacingCheck=0
                     messageOutput+="\n"
-                    print("niceee")
                     counter=0
                     continue
                 else:
@@ -285,11 +283,13 @@ class GUI_Story:
 
     #DEAL WITH LATER
     def socialFriends(self):
+        socialMessage=""
         if self.varDict["virus"]=="1":
-            print("Fr1en&s # NN-5ac3b Matth5wsNN-Iris S&er#ey NN-Zorana *egi$e NN-Si&fra*FredNN#3 others *idden")
+            socialMessage+=("Fr1en&s # NN-5ac3b Matth5wsNN-Iris S&er#ey NN-Zorana *egi$e NN-Si&fra*FredNN#3 others *idden")
         else:
-            print("Friends - NNJacob MatthewsNNIris Sherley NNZorana Regine NNSiofra Fred NN13 others hiddenNN")
-        self.messageFormat("I don't use social media so it's no surprise that I'm not listed")
+            socialMesage+=("Friends - NNJacob MatthewsNNIris Sherley NNZorana Regine NNSiofra Fred NN13 others hiddenNN")
+        socialMessage+=("\n\nI don't use social media so it's no surprise that I'm not listed")
+        self.messageFormat(socialMessage)
         self.choiceMaker(["1","Go back","socialMedia1"])
 
     def socialInterests(self):
@@ -298,7 +298,7 @@ class GUI_Story:
             socialMessage+=("3avo*ite$Hobb#: Pro*ra1min5NN-Favo5rite fo$d:#ChickenNN-*avouri5e Mo1ie3 The *od5athe%NN-Favourite3Music Genre: Undecid&dNN-1avo#uit5 Drink: Pep%i")
         else:
             socialMessage+=("Favorite Hobby: ProgrammingNNFavourite food: ChickenNNFavourite Movie: The GodfatherNNFavourite Music Genre: UndecidedNNFavoruite Drink: PepsiNN")
-        if globaldict["food"]=="1":
+        if self.varDict["food"]=="1":
             socialMessage+=("NNNNAm I missing something?")
         else:
             socialMessage+=("NNNNNothing of interest...")
@@ -382,7 +382,7 @@ class GUI_Story:
             self.choiceMaker(["1","Log in","codeSite1"])
 
     def serviceLogin(self):
-        self.messageFormat("Security question:NNAttempts remaining - " + str(globaldict["sattempt"]) + "/3NNRemaining Questions - 3/3NNNNSecurity questions, I'm assuming I have to answer them because my IP doesn't match Albert's")
+        self.messageFormat("Security question:NNAttempts remaining - " + str(self.varDict["sattempt"]) + "/3NNRemaining Questions - 3/3NNNNSecurity questions, I'm assuming I have to answer them because my IP doesn't match Albert's")
         if self.varDict["sattempt"]==0:
             self.messageFormat("Check email for account recovery.NNI'm locked out")
             self.choiceMaker(["1","Use a VPN","vpnBlocked","2","Review choices","choice1"])
@@ -417,8 +417,8 @@ class GUI_Story:
                 self.messageFormat("Only one more to go.")
                 self.choiceMaker(["1","Next question","question3"])
             else:
-                globaldict["sattempt"]=globaldict["sattempt"]-1
-                self.messageFormat("Inorrect - " + str(globaldict["sattempt"]) + " attempts remain.")
+                self.varDict["sattempt"]=self.varDict["sattempt"]-1
+                self.messageFormat("Inorrect - " + str(self.varDict["sattempt"]) + " attempts remain.")
                 self.choiceMaker(["1","Try again","question2","2","Cancel login attempt","serviceLogin"])
       
     def question3(self):
@@ -443,7 +443,7 @@ class GUI_Story:
             self.choiceMaker(["1","Review choices","choice1"])
         else:
             messageCodeSite1+=("At last, something of value to Albert.NNNNThe site contains 3 programs Albert has been working on, I hope they're important to him.NNNNThere are 3 filesNN")
-            if globaldict["virus"]=="1":
+            if self.varDict["virus"]=="1":
                 messageCodeSite1+=("1rojec# 1NN-passwor# m*na5erNN-%tawr63&NN")
             else:
                 messageCodeSite1+=("project 1NNpassword managerNNrtawr63wNN")
@@ -522,10 +522,10 @@ class GUI_Story:
 
         if self.varDict["datab"]=="0" and self.varDict["reported"]=="0" and self.varDict["spammed"]=="0" and self.varDict["friendly"] =="1":
             messageEnding+=("I'm glad I was able to remain friends with Albert. Petty revenge isn't worth it.NN")
-        elif globaldict["friendly"] =="1":
+        elif self.varDict["friendly"] =="1":
             messageEnding+=("Whilst me and Albert are friends again, I hope he isn't too vengeful when he discovers my revenge.NN")
 
-        if globaldict["datab"]=="0" and globaldict["reported"]=="0" and globaldict["spammed"]=="0" and globaldict["friendly"] =="0":
+        if self.varDict["datab"]=="0" and self.varDict["reported"]=="0" and self.varDict["spammed"]=="0" and self.varDict["friendly"] =="0":
             messageEnding+=("I didn't get my revenge")
         self.messageFormat(messageEnding)
     
