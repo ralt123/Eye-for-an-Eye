@@ -1,0 +1,60 @@
+import sqlite3
+
+def signup():
+  print("Eye for an Eye")
+  print("Hello and welcome to our story")
+  print("1. Signup 2. Login 3. Exit")
+  option = int(input("Enter option:\t"))
+  with sqlite3.connect("Story.db") as db:
+    cursor = db.cursor()
+  cursor.execute(""" 
+    CREATE TABLE IF NOT EXISTS users(
+      Maincharacter INTEGER PRIMARY KEY,
+      Surname VARCHAR(50),
+      Firstname VARCHAR(50),
+      Username VARCHAR(50),
+      password VARCHAR(50));""")
+
+if option ==1: 
+
+    #for option is 1 
+
+    Surname = input('Surname: ') 
+
+    Firstname = input('Firstname: ') 
+
+    Username = input('Username: ') 
+
+    #make them add their details 
+
+    password = input("Password: ")   
+
+    sql_command = """INSERT INTO users(Username, password, Surname, Firstname)  VALUES (?,?,?,?);""" 
+    cursor.execute(sql_command,[(Username),(password),(Surname),(Firstname)]) 
+    db.commit()  
+
+elif option == 2 : 
+  login()  
+
+elif option == 3 : 
+  sys.exit('GoodBye') 
+
+else: 
+  print("Try again.")
+  signup()
+
+def login():  
+  Username = input('Username: ') 
+  password = input('Password: ') 
+  try: 
+    with sqlite3.connect("Story.db") as db: 
+      cursor = db.cursor() 
+    finduser = ("SELECT * FROM users where password = ?") 
+    cursor.execute(finduser, [(password)]) 
+    result = cursor.fetchall() 
+    print(result) 
+    if result == []: 
+      raise TimeoutError
+    else:
+      print("Wrong deatils. Try again.")
+      login()
